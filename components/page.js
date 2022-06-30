@@ -9,9 +9,12 @@ import Ask from './ask'
 import Caption from './caption'
 import Detect from './detect'
 import Embed from './embed'
+import Home from './home'
+import Save from './save'
+import Search from './search'
 import Segment from './segment'
 import Sense from './sense'
-import Summarize from './summarize'
+import Summary from './summary'
 
 const apiUrl = "https://noether-ai.herokuapp.com"
 
@@ -21,7 +24,9 @@ const Page = ({ endpoint }) => {
 	      <div className="page">
 	        <div className="navigation">
 	          <div className="logo-container">
-	            <img src="logo2.jpg" className="logo" />
+	          	<Link href="/">
+	            	<img src="logo2.jpg" className="logo" />
+	            </Link>
 	          </div>
 	          <Link href="/ask">
 	            <div className={classnames("navigation-link", { selected: endpoint === "ask"})}>
@@ -43,37 +48,48 @@ const Page = ({ endpoint }) => {
 	              index
 	            </div>
 	          </Link>*/}
-	          {/*<Link href="/save">
-	            <div className="navigation-link">
-	              save
-	            </div>
-	          </Link>*/}
-	          {/*<Link href="/search">
-	            <div className="navigation-link">
-	              search
-	            </div>
-	          </Link> */} 
-	          <Link href="/segment">
-	            <div className={classnames("navigation-link", { selected: endpoint === "segment"})}>
-	              segment
+	          <Link href="/partition">
+	            <div className={classnames("navigation-link", { selected: endpoint === "partition"})}>
+	              partition
 	            </div>
 	          </Link>
+	          <Link href="/save">
+	            <div className={classnames("navigation-link", { selected: endpoint === "save"})}>
+	              save
+	            </div>
+	          </Link>
+	          <Link href="/search">
+	            <div className={classnames("navigation-link", { selected: endpoint === "search"})}>
+	              search
+	            </div>
+	          </Link> 
 	          {/*<Link href="/similar">
 	            <div className="navigation-link">
 	              similar
 	            </div>
 	          </Link>*/}
-	          <Link href="/summarize">
-	            <div className={classnames("navigation-link", { selected: endpoint === "summarize"})}>
+	          <Link href="/summary">
+	            <div className={classnames("navigation-link", { selected: endpoint === "summary"})}>
 	              summary
 	            </div>
 	          </Link>
-	          <div className="version">
+	          <div className="navigation-footer">
+	          	<Link href="https://buy.stripe.com/8wMaHk1BBfeh8LKaEF">
+		          	<button className="subscribe">
+		          		Subscribe
+		          	</button>
+	          	</Link>
+		        <div className="version">
 		      	 version 0.0 (alpha)
+		   		</div>
 		   	  </div>
 	        </div>
 	      </div>
 	      <div className="page-content-container">
+	      	{
+	      		!endpoint && 
+	      		<Home />
+	      	}
 	      	{
 	      		(endpoint === "ask") &&
 	      		<Ask apiUrl={apiUrl} />
@@ -87,8 +103,16 @@ const Page = ({ endpoint }) => {
 	      		<Embed />
 	      	}
 	      	{
-	      		(endpoint === "segment") &&
+	      		(endpoint === "partition") &&
 	      		<Segment />
+	      	}
+	      	{
+	      		(endpoint === "save") &&
+	      		<Save />
+	      	}
+	      	{
+	      		(endpoint === "search") &&
+	      		<Search />
 	      	}
 	      	{
 	      		(endpoint === "summary") &&

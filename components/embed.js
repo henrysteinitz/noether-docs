@@ -5,7 +5,7 @@ const Embed = () => {
           	/embed
           </h1>
           <div className="summary">
-          	/embed accepts audio, image, video, or text data, and returns various float-tensor embeddings of the data. 
+          	<code>embed</code> accepts audio, image, video, or text data, and returns various float-tensor embeddings of the data. 
           	The embeddings are shared accross all data-types, meaning embeddings from different input types may be meaningfully compared.
           </div>
           <h4>
@@ -28,6 +28,9 @@ const Embed = () => {
                   <code>video_url : string</code>
                 </li>
               </ul>
+            </li>
+            <li className="list-input-output">
+              <code>api_key : string</code> - API key for authentication.
             </li>
           </ul>
           <h4>
